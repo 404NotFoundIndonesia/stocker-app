@@ -15,6 +15,20 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @if(request()->session()->has('success'))
+            <script defer>
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    window.alertSuccess("{{ request()->session()->get('success') ?? '' }}")
+                });
+            </script>
+        @endif
+        @if(request()->session()->has('error'))
+            <script defer>
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    window.alertError("{{ request()->session()->get('error') ?? '' }}")
+                });
+                </script>
+        @endif
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
